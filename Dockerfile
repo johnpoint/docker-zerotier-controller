@@ -9,7 +9,7 @@ ENV ZEROTIER_ONE_VERSION=1.6.6
     
 
 RUN apk update && \
-    apk add python3 alpine-sdk gcc wget git linux-headers libpq libpqxx libpq-dev postgresql-dev bash jq
+    apk add python3 alpine-sdk gcc wget git linux-headers libpq libpq-dev postgresql-dev bash jq
 
 WORKDIR /src
 
