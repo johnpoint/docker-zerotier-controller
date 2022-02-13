@@ -44,8 +44,9 @@ RUN curl https://codeload.github.com/zerotier/ZeroTierOne/tar.gz/refs/tags/${ZER
     bash build.sh
 
 # Downloading and build latest tagged zero-ui
-RUN ZERO_UI_VERSION=`curl --silent "https://api.github.com/repos/dec0dOS/zero-ui/tags" | jq -r '.[0].name'` && \
-    curl https://codeload.github.com/dec0dOS/zero-ui/tar.gz/refs/tags/${ZERO_UI_VERSION} --output /tmp/zero-ui.tar.gz && \
+# `curl --silent "https://api.github.com/repos/key-networks/ztncui/tags" | jq -r '.[0].name'` && \
+RUN ZERO_UI_VERSION=v1.0.21 && \
+    curl https://codeload.github.com/key-networks/ztncui/tar.gz/refs/tags/${ZERO_UI_VERSION} --output /tmp/zero-ui.tar.gz && \
     mkdir -p /src/ && \
     cd /src && \
     tar fxz /tmp/zero-ui.tar.gz && \
