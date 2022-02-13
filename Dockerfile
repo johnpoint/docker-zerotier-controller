@@ -9,7 +9,7 @@ ENV ZEROTIER_ONE_VERSION=1.6.6
     
 
 RUN apk update && \
-    apk add python3 alpine-sdk gcc wget git linux-headers libpq postgresql-dev bash jq
+    apk add python3 alpine-sdk gcc wget git linux-headers libpq libpqxx libpq-dev postgresql-dev bash jq
 
 WORKDIR /src
 
@@ -39,7 +39,7 @@ RUN curl https://codeload.github.com/zerotier/ZeroTierOne/tar.gz/refs/tags/${ZER
     rm -rf /tmp/ZeroTierOne.tar.gz && \
     python3 /src/patch/patch.py && \
     cd /src/ZeroTierOne && \
-    make central-controller CPPFLAGS+=-w && \
+    make CPPFLAGS+=-w && \
     cd /src/ZeroTierOne/attic/world && \
     bash build.sh
 
