@@ -84,8 +84,7 @@ RUN apk update && \
     ln -s /app/config/authtoken.secret /var/lib/zerotier-one/authtoken.secret
 
 # Installing s6-overlay
-RUN S6_OVERLAY_VERSION=`curl --silent "https://api.github.com/repos/just-containers/s6-overlay/releases/latest" | jq -r .tag_name` && \
-    wget https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_VERSION}/s6-overlay-amd64.tar.gz -O /tmp/s6-overlay-amd64.tar.gz && \
+RUN wget https://github.com/just-containers/s6-overlay/releases/download/`curl --silent "https://api.github.com/repos/just-containers/s6-overlay/releases/latest" | jq -r .tag_name`/s6-overlay-amd64.tar.gz -O /tmp/s6-overlay-amd64.tar.gz && \
     gunzip -c /tmp/s6-overlay-amd64.tar.gz | tar -xf - -C / && \
     rm -rf /tmp/s6-overlay-amd64.tar.gz
 
